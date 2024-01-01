@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/features/authentication/screens/login/login.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
@@ -13,13 +14,13 @@ class OnBoardingController extends GetxController {
   //Jump to specific dot selected page
   void dotNavigationClick(index) {
     currentPageIndex.value = index;
-    pageController.jumpToPage(index);
+    pageController.jumpTo(index);
   }
 
   //Update Current Index and jump to next page
   void nextPage() {
     if (currentPageIndex.value == 2) {
-      // Get.to(LoginPage);
+      Get.offAll(const LoginScreen());
     } else {
       int page = currentPageIndex.value + 1;
       pageController.jumpToPage(page);
