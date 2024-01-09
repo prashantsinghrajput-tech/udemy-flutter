@@ -1,6 +1,8 @@
 import 'package:e_commerce_app/common/widgets/common_shapes/container/primary_header_container.dart';
 import 'package:e_commerce_app/common/widgets/common_shapes/container/search_container.dart';
+import 'package:e_commerce_app/common/widgets/texts/section_heading.dart';
 import 'package:e_commerce_app/features/shop/screens/home/widgets/home_appbar.dart';
+import 'package:e_commerce_app/features/shop/screens/home/widgets/home_categories.dart';
 import 'package:e_commerce_app/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 
@@ -9,7 +11,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: SingleChildScrollView(
           child: Column(
         children: [
@@ -17,29 +19,36 @@ class HomeScreen extends StatelessWidget {
           TPrimaryHeaderContainer(
             child: Column(
               children: [
-                const THomeAppBar(),
+                THomeAppBar(),
 
-                const SizedBox(
+                SizedBox(
                   height: TSizes.spaceBtwSections,
                 ),
 
                 /// --Search bar
-                const TSearchContainer(
+                TSearchContainer(
                   text: 'Search in Store',
                 ),
-                const SizedBox(
+                SizedBox(
                   height: TSizes.spaceBtwSections,
                 ),
 
                 /// --Categories
                 Padding(
-                  padding: const EdgeInsets.only(left: TSizes.defaultSpace),
+                  padding: EdgeInsets.only(left: TSizes.defaultSpace),
                   child: Column(
                     children: [
-                      Text(
-                        'Popular Categories',
-                        style: Theme.of(context).textTheme.headlineSmall,
+                      TSectionHeading(
+                        title: 'Popular Categories',
+                        showActionButton: false,
+                        textColor: Colors.white,
                       ),
+                      SizedBox(
+                        height: TSizes.spaceBtwItems,
+                      ),
+
+                      ///Categories
+                      THomeCategories()
                     ],
                   ),
                 )
