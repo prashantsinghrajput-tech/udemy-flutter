@@ -1,8 +1,7 @@
-import 'package:e_commerce_app/common/widgets/appbar/appbar.dart';
 import 'package:e_commerce_app/common/widgets/common_shapes/container/primary_header_container.dart';
-import 'package:e_commerce_app/common/widgets/products/cart/cart_menu_icon.dart';
-import 'package:e_commerce_app/utils/constants/colors.dart';
-import 'package:e_commerce_app/utils/constants/text_strings.dart';
+import 'package:e_commerce_app/common/widgets/common_shapes/container/search_container.dart';
+import 'package:e_commerce_app/features/shop/screens/home/widgets/home_appbar.dart';
+import 'package:e_commerce_app/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -14,31 +13,35 @@ class HomeScreen extends StatelessWidget {
       body: SingleChildScrollView(
           child: Column(
         children: [
+          ///Header --[Section #3]
           TPrimaryHeaderContainer(
             child: Column(
               children: [
-                TAppBar(
-                  title: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                const THomeAppBar(),
+
+                const SizedBox(
+                  height: TSizes.spaceBtwSections,
+                ),
+
+                /// --Search bar
+                const TSearchContainer(
+                  text: 'Search in Store',
+                ),
+                const SizedBox(
+                  height: TSizes.spaceBtwSections,
+                ),
+
+                /// --Categories
+                Padding(
+                  padding: const EdgeInsets.only(left: TSizes.defaultSpace),
+                  child: Column(
                     children: [
-                      Text(TTexts.homeAppbarTitle,
-                          style: Theme.of(context)
-                              .textTheme
-                              .labelMedium!
-                              .apply(color: TColors.grey)),
-                      Text(TTexts.homeAppbarSubTitle,
-                          style:
-                              Theme.of(context).textTheme.headlineSmall!.apply(
-                                    color: TColors.white,
-                                  )),
+                      Text(
+                        'Popular Categories',
+                        style: Theme.of(context).textTheme.headlineSmall,
+                      ),
                     ],
                   ),
-                  actions: [
-                    TCartCounterIcon(
-                      onPressed: () {},
-                      iconColor: TColors.white,
-                    )
-                  ],
                 )
               ],
             ),
